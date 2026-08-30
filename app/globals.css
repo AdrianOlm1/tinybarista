@@ -70,7 +70,7 @@ input:focus {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: var(--tan) transparent;
+  scrollbar-color: var(--brown) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -81,11 +81,11 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--tan);
+  background: var(--brown);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brown);
+  background: var(--deep-brown);
 }
 
 .hscroll {
