@@ -6,7 +6,7 @@
   align-items: flex-end;
   justify-content: center;
   padding: 0;
-  background: rgba(27, 26, 23, 0.5);
+  background: rgba(28, 21, 18, 0.5);
   animation: fade 0.18s ease;
 }
 @media (min-width: 768px) {
@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   animation: rise 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 24px 70px rgba(27, 26, 23, 0.35);
+  box-shadow: 0 24px 70px rgba(28, 21, 18, 0.35);
 }
 @media (min-width: 768px) {
   .sheet {
@@ -45,7 +45,7 @@
   display: flex;
   gap: 16px;
   padding: 18px 20px 16px;
-  border-bottom: 1px solid rgba(107, 67, 38, 0.14);
+  border-bottom: 1px solid rgba(116, 64, 27, 0.14);
   background: var(--off-white);
 }
 @media (min-width: 768px) {
@@ -85,7 +85,7 @@
 }
 .headBlurb {
   font: 300 13px/1.6 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.62);
+  color: rgba(62, 34, 20, 0.62);
 }
 .headTag {
   font: 400 11px/1 var(--font-jost), sans-serif;
@@ -98,7 +98,7 @@
   background: transparent;
   cursor: pointer;
   font: 300 24px/1 var(--font-jost), sans-serif;
-  color: rgba(27, 26, 23, 0.45);
+  color: rgba(28, 21, 18, 0.45);
   height: 26px;
 }
 
@@ -124,7 +124,7 @@
 }
 .groupHint {
   font: 300 11.5px/1 var(--font-jost), sans-serif;
-  color: rgba(27, 26, 23, 0.45);
+  color: rgba(28, 21, 18, 0.45);
 }
 .choices {
   display: flex;
@@ -136,9 +136,9 @@
   padding: 10px 15px;
   cursor: pointer;
   font: 400 13px/1 var(--font-jost), sans-serif;
-  border: 1px solid rgba(27, 26, 23, 0.16);
+  border: 1px solid rgba(28, 21, 18, 0.16);
   background: #fff;
-  color: rgba(27, 26, 23, 0.72);
+  color: rgba(28, 21, 18, 0.72);
   display: flex;
   gap: 6px;
   align-items: baseline;
@@ -163,7 +163,7 @@
 }
 .noteInput {
   width: 100%;
-  border: 1px solid rgba(27, 26, 23, 0.16);
+  border: 1px solid rgba(28, 21, 18, 0.16);
   border-radius: 10px;
   padding: 12px;
   font: 300 13.5px/1 var(--font-jost), sans-serif;
@@ -171,7 +171,7 @@
 }
 
 .foot {
-  border-top: 1px solid rgba(27, 26, 23, 0.09);
+  border-top: 1px solid rgba(28, 21, 18, 0.09);
   padding: 14px 20px 18px;
   display: flex;
   align-items: center;
@@ -180,7 +180,7 @@
 .stepper {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(27, 26, 23, 0.16);
+  border: 1px solid rgba(28, 21, 18, 0.16);
   border-radius: 999px;
   overflow: hidden;
   flex: none;

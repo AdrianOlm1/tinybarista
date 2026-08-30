@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useStore } from "@/lib/store";
 import Header from "./Header";
 import HomeView from "./HomeView";
@@ -15,6 +16,13 @@ export default function App() {
   const { view, navDir, sheetId } = useStore();
 
   const animClass = navDir === "back" ? "slideFromLeft" : navDir === "fwd" ? "slideFromRight" : "viewIn";
+
+  // Belt-and-suspenders scroll reset: runs after the new view has actually
+  // mounted, so a bean/nav click always lands at the top of the next page
+  // regardless of click-event timing.
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [view]);
 
   return (
     <div>

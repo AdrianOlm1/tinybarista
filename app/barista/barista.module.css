@@ -14,12 +14,12 @@
 }
 .sub {
   font-size: 13px;
-  color: rgba(59, 35, 23, 0.55);
+  color: rgba(62, 34, 20, 0.55);
   margin: 0 0 28px;
 }
 .empty {
   font-size: 14px;
-  color: rgba(59, 35, 23, 0.55);
+  color: rgba(62, 34, 20, 0.55);
 }
 .list {
   display: flex;
@@ -28,7 +28,7 @@
 }
 .card,
 .cardReady {
-  border: 1px solid rgba(107, 67, 38, 0.18);
+  border: 1px solid rgba(116, 64, 27, 0.18);
   border-radius: 14px;
   padding: 16px 18px;
   background: #fff;
@@ -55,7 +55,7 @@
   margin: 0 0 12px;
   padding-left: 18px;
   font-size: 13px;
-  color: rgba(59, 35, 23, 0.75);
+  color: rgba(62, 34, 20, 0.75);
   line-height: 1.6;
 }
 .foot {

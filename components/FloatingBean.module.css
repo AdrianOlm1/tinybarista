@@ -10,7 +10,7 @@
   cursor: pointer;
   background: transparent;
   animation: rise 0.24s ease;
-  filter: drop-shadow(0 8px 16px rgba(59, 35, 23, 0.4));
+  filter: drop-shadow(0 8px 16px rgba(62, 34, 20, 0.4));
 }
 @media (min-width: 768px) {
   .bean {
@@ -37,7 +37,7 @@
   padding: 0 7px;
   border-radius: 999px;
   background: var(--cream);
-  box-shadow: 0 2px 7px rgba(59, 35, 23, 0.3);
+  box-shadow: 0 2px 7px rgba(62, 34, 20, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;

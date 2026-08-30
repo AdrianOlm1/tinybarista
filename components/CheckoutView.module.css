@@ -8,7 +8,7 @@
   background: transparent;
   cursor: pointer;
   font: 400 12.5px/1 var(--font-jost), sans-serif;
-  color: rgba(27, 26, 23, 0.6);
+  color: rgba(28, 21, 18, 0.6);
   padding: 0 0 16px;
 }
 .title {
@@ -22,9 +22,11 @@
   gap: 20px;
 }
 .card {
-  border: 1px solid rgba(27, 26, 23, 0.12);
+  background: var(--off-white);
+  border: 1px solid rgba(116, 64, 27, 0.14);
   border-radius: 14px;
   padding: 18px;
+  box-shadow: 0 2px 12px rgba(62, 34, 20, 0.07);
 }
 .cardLabel {
   font: 500 11px/1 var(--font-jost), sans-serif;
@@ -43,9 +45,9 @@
   padding: 9px 15px;
   cursor: pointer;
   font: 400 13px/1 var(--font-jost), sans-serif;
-  border: 1px solid rgba(27, 26, 23, 0.16);
-  background: #fff;
-  color: rgba(27, 26, 23, 0.72);
+  border: 1px solid rgba(116, 64, 27, 0.16);
+  background: var(--sand);
+  color: rgba(28, 21, 18, 0.72);
 }
 .slotChipActive {
   composes: slotChip;
@@ -55,7 +57,7 @@
 }
 .slotNote {
   font: 300 12px/1.5 var(--font-jost), sans-serif;
-  color: rgba(27, 26, 23, 0.5);
+  color: rgba(28, 21, 18, 0.5);
   margin-top: 10px;
 }
 
@@ -66,12 +68,13 @@
 }
 .fieldLabel {
   font: 400 11.5px/1 var(--font-jost), sans-serif;
-  color: rgba(27, 26, 23, 0.55);
+  color: rgba(28, 21, 18, 0.55);
   margin-bottom: 6px;
 }
 .input {
   width: 100%;
-  border: 1px solid rgba(27, 26, 23, 0.16);
+  background: #fff;
+  border: 1px solid rgba(28, 21, 18, 0.16);
   border-radius: 9px;
   padding: 11px 12px;
   font: 300 14px/1 var(--font-jost), sans-serif;
@@ -79,9 +82,11 @@
 }
 
 .orderCard {
-  border: 1px solid rgba(107, 67, 38, 0.18);
+  background: var(--off-white);
+  border: 1px solid rgba(116, 64, 27, 0.14);
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(62, 34, 20, 0.07);
 }
 .orderHead {
   background: var(--cream);
@@ -90,7 +95,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 10px;
-  border-bottom: 1px solid rgba(107, 67, 38, 0.16);
+  border-bottom: 1px solid rgba(116, 64, 27, 0.16);
 }
 .orderTitle {
   font: 400 26px/1 var(--font-pinyon), cursive;
@@ -98,7 +103,7 @@
 }
 .orderCount {
   font: 300 12px/1 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.55);
+  color: rgba(62, 34, 20, 0.55);
 }
 .emptyCart {
   padding: 34px 20px;
@@ -110,7 +115,7 @@
 }
 .emptyBody {
   font: 300 13.5px/1.6 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.6);
+  color: rgba(62, 34, 20, 0.6);
 }
 .browseBtn {
   border: 1px solid var(--forest);
@@ -135,7 +140,7 @@
   display: flex;
   gap: 14px;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(107, 67, 38, 0.12);
+  border-bottom: 1px solid rgba(116, 64, 27, 0.12);
 }
 .line:last-child {
   border-bottom: 0;
@@ -168,7 +173,7 @@
 }
 .lineOpts {
   font: 300 12.5px/1.5 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.6);
+  color: rgba(62, 34, 20, 0.6);
 }
 .lineActions {
   display: flex;
@@ -179,7 +184,7 @@
 .stepper {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(107, 67, 38, 0.25);
+  border: 1px solid rgba(116, 64, 27, 0.25);
   border-radius: 999px;
   overflow: hidden;
   background: #fff;
@@ -197,7 +202,7 @@
   text-align: center;
 }
 .editBtn {
-  border: 1px solid rgba(63, 104, 50, 0.4);
+  border: 1px solid rgba(51, 119, 34, 0.4);
   background: #fff;
   color: var(--forest);
   border-radius: 999px;
@@ -216,7 +221,7 @@
   cursor: pointer;
   padding: 8px 2px;
   font: 400 12px/1 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.45);
+  color: rgba(62, 34, 20, 0.45);
 }
 .removeBtn:hover {
   color: #8a3b2a;
@@ -231,7 +236,7 @@
 }
 .tipNote {
   font: 300 12px/1 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.5);
+  color: rgba(62, 34, 20, 0.5);
 }
 .tips {
   display: flex;
@@ -247,9 +252,9 @@
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  border: 1px solid rgba(27, 26, 23, 0.16);
-  background: #fff;
-  color: rgba(27, 26, 23, 0.72);
+  border: 1px solid rgba(116, 64, 27, 0.16);
+  background: var(--sand);
+  color: rgba(28, 21, 18, 0.72);
 }
 .tipTileActive {
   composes: tipTile;
@@ -265,18 +270,79 @@
   opacity: 0.75;
 }
 
+.customTipRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid rgba(28, 21, 18, 0.16);
+  border-radius: 9px;
+  padding: 0 6px 0 12px;
+  box-shadow: 0 1px 4px rgba(62, 34, 20, 0.08);
+}
+.customTipRow:focus-within {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(51, 119, 34, 0.15);
+}
+.customTipPrefix {
+  font: 300 14px/1 var(--font-jost), sans-serif;
+  color: rgba(28, 21, 18, 0.5);
+}
+.customTipInput {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 11px 0;
+  font: 300 14px/1 var(--font-jost), sans-serif;
+  outline: none;
+}
+.customTipInput:focus {
+  box-shadow: none !important;
+}
+.customTipInput::-webkit-outer-spin-button,
+.customTipInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.customUnitToggle {
+  display: flex;
+  gap: 2px;
+  background: var(--sand);
+  border-radius: 999px;
+  padding: 3px;
+  flex: none;
+}
+.customUnitBtn {
+  border: 0;
+  cursor: pointer;
+  min-width: 28px;
+  padding: 6px 0;
+  border-radius: 999px;
+  font: 500 12px/1 var(--font-jost), sans-serif;
+  background: transparent;
+  color: rgba(62, 34, 20, 0.55);
+}
+.customUnitBtnActive {
+  composes: customUnitBtn;
+  background: var(--forest);
+  color: #fff;
+}
+
 .totals {
-  border: 1px solid rgba(107, 67, 38, 0.18);
+  border: 1px solid rgba(116, 64, 27, 0.18);
   border-radius: 18px;
   padding: 18px;
   background: var(--off-white);
+  box-shadow: 0 2px 12px rgba(62, 34, 20, 0.07);
 }
 .totalRow {
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
   font: 300 13px/1 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.65);
+  color: rgba(62, 34, 20, 0.65);
 }
 .totalRow:first-child {
   padding-top: 0;
@@ -286,7 +352,7 @@
   justify-content: space-between;
   padding-top: 14px;
   margin-top: 12px;
-  border-top: 1px solid rgba(107, 67, 38, 0.18);
+  border-top: 1px solid rgba(116, 64, 27, 0.18);
   font: 500 19px/1 var(--font-jost), sans-serif;
 }
 
@@ -311,7 +377,7 @@
 }
 .payNote {
   font: 300 12px/1.5 var(--font-jost), sans-serif;
-  color: rgba(27, 26, 23, 0.45);
+  color: rgba(28, 21, 18, 0.45);
   text-align: center;
   margin-top: 10px;
 }

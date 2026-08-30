@@ -72,7 +72,7 @@ export default function MenuView() {
                     )}
                     <button
                       className={styles.favBtn}
-                      style={{ color: favs.includes(it.id) ? "var(--forest)" : "rgba(27,26,23,.25)" }}
+                      style={{ color: favs.includes(it.id) ? "var(--forest)" : "rgba(28,21,18,.25)" }}
                       onClick={(e) => {
                         e.stopPropagation();
                         toggleFav(it.id);

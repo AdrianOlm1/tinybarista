@@ -10,7 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { CATS, findItem, ITEMS } from "./menu";
+import { CATS, findItem, ITEMS, SEED_GOTOS } from "./menu";
 import { buildSlots, optPrice, optSummary } from "./pricing";
 import { loadJSON, removeKey, saveJSON } from "./storage";
 import type { CartLine, CookieChoice, GoTo, NavDir, TipPct, View } from "./types";
@@ -33,6 +33,9 @@ interface StoreState {
   name: string;
   phone: string;
   tipPct: TipPct;
+  tipMode: "pct" | "custom";
+  customTip: number;
+  customUnit: "$" | "%";
   cookieChoice: CookieChoice;
   now: Date;
   lastOrderId: string | null;
@@ -64,6 +67,9 @@ interface StoreActions {
   setPhone: (v: string) => void;
   pickSlot: (v: string) => void;
   pickTip: (v: TipPct) => void;
+  pickCustomTip: () => void;
+  setCustomTip: (amount: number) => void;
+  setCustomUnit: (unit: "$" | "%") => void;
   acceptCookies: () => void;
   declineCookies: () => void;
 }
@@ -85,11 +91,14 @@ const initialState: StoreState = {
   editIdx: null,
   cart: [],
   favs: [],
-  gotos: [],
+  gotos: SEED_GOTOS,
   slot: null,
   name: "",
   phone: "",
   tipPct: 0.18,
+  tipMode: "pct",
+  customTip: 0,
+  customUnit: "$",
   cookieChoice: null,
   now: new Date(),
   lastOrderId: null,
@@ -117,7 +126,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     const patch: Partial<StoreState> = { cookieChoice: consent, cart };
     if (consent === "all") {
       patch.favs = loadJSON<string[]>("tb.favs", []);
-      patch.gotos = loadJSON<GoTo[]>("tb.gotos", []);
+      patch.gotos = loadJSON<GoTo[]>("tb.gotos", SEED_GOTOS);
       const customer = loadJSON<{ name: string; phone: string }>("tb.customer", { name: "", phone: "" });
       patch.name = customer.name;
       patch.phone = customer.phone;
@@ -272,8 +281,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         }),
       lineDec: (i) =>
         setState((s) => {
+          const current = s.cart[i];
+          if (!current) return s;
+          if (current.qty <= 1) return { ...s, cart: s.cart.filter((_, j) => j !== i) };
           const cart = s.cart.slice();
-          cart[i] = { ...cart[i], qty: Math.max(1, cart[i].qty - 1) };
+          cart[i] = { ...current, qty: current.qty - 1 };
           return { ...s, cart };
         }),
       lineRemove: (i) => setState((s) => ({ ...s, cart: s.cart.filter((_, j) => j !== i) })),
@@ -281,7 +293,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setName: (name) => setState((s) => ({ ...s, name })),
       setPhone: (phone) => setState((s) => ({ ...s, phone })),
       pickSlot: (slot) => setState((s) => ({ ...s, slot })),
-      pickTip: (tipPct) => setState((s) => ({ ...s, tipPct })),
+      pickTip: (tipPct) => setState((s) => ({ ...s, tipPct, tipMode: "pct" })),
+      pickCustomTip: () => setState((s) => ({ ...s, tipMode: "custom" })),
+      setCustomTip: (amount) =>
+        setState((s) => ({ ...s, customTip: Math.max(0, Number.isFinite(amount) ? amount : 0), tipMode: "custom" })),
+      setCustomUnit: (unit) => setState((s) => ({ ...s, customUnit: unit, tipMode: "custom" })),
 
       acceptCookies: () => setState((s) => ({ ...s, cookieChoice: "all" })),
       declineCookies: () => setState((s) => ({ ...s, cookieChoice: "essential" })),
@@ -301,7 +317,7 @@ export function useStore(): Store {
 }
 
 export function useCartTotals() {
-  const { cart, tipPct } = useStore();
+  const { cart, tipPct, tipMode, customTip, customUnit } = useStore();
   return useMemo(() => {
     const lines = cart.map((line, i) => {
       const it = findItem(line.id)!;
@@ -311,10 +327,11 @@ export function useCartTotals() {
     const subtotal = lines.reduce((a, l) => a + l.price, 0);
     const count = cart.reduce((a, l) => a + l.qty, 0);
     const tax = subtotal * 0.0775;
-    const tip = subtotal * tipPct;
+    const tip =
+      tipMode === "custom" ? (customUnit === "%" ? subtotal * (customTip / 100) : customTip) : subtotal * tipPct;
     const total = subtotal + tax + tip;
     return { lines, subtotal, count, tax, tip, total };
-  }, [cart, tipPct]);
+  }, [cart, tipPct, tipMode, customTip, customUnit]);
 }
 
 export { ITEMS, CATS };

@@ -161,6 +161,7 @@ export default function HomeView() {
       </div>
 
       <div className={styles.visit}>
+        <div className={styles.visitGrid}>
         <div>
           <div className={styles.visitLabel}>Pickup hours</div>
           <div className={styles.visitBody}>
@@ -188,6 +189,7 @@ export default function HomeView() {
             <br />
             <a href="#">@tinybaristas →</a>
           </div>
+        </div>
         </div>
       </div>
 

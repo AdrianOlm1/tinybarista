@@ -60,7 +60,13 @@ export default function SearchOverlay() {
       <div className={styles.results}>
         {results.map((it) => (
           <button className={styles.row} key={it.id} onClick={() => openSheet(it.id)}>
-            <img src={it.img ? `/img/${it.img}` : "/img/bean.png"} alt="" className={styles.rowImg} />
+            {it.img ? (
+              <img src={`/img/${it.img}`} alt="" className={styles.rowImg} />
+            ) : (
+              <div className={styles.rowImgPlaceholder} aria-hidden="true">
+                <span>PHOTO</span>
+              </div>
+            )}
             <span className={styles.rowText}>
               <span className={styles.rowName}>{it.name}</span>
               <span className={styles.rowBlurb}>{it.blurb}</span>

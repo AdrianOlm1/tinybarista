@@ -14,6 +14,9 @@ export default function CheckoutView() {
     name,
     phone,
     tipPct,
+    tipMode,
+    customTip,
+    customUnit,
     backToMenu,
     goMenu,
     openSheet,
@@ -24,6 +27,9 @@ export default function CheckoutView() {
     setPhone,
     pickSlot,
     pickTip,
+    pickCustomTip,
+    setCustomTip,
+    setCustomUnit,
     placeOrder,
   } = useStore();
   const { lines, subtotal, count, tax, tip, total } = useCartTotals();
@@ -143,14 +149,55 @@ export default function CheckoutView() {
             {TIP_OPTIONS.map((p) => (
               <button
                 key={p}
-                className={p === tipPct ? styles.tipTileActive : styles.tipTile}
+                className={tipMode === "pct" && p === tipPct ? styles.tipTileActive : styles.tipTile}
                 onClick={() => pickTip(p)}
               >
                 <span className={styles.tipLabel}>{p === 0 ? "No tip" : `${Math.round(p * 100)}%`}</span>
                 <span className={styles.tipAmount}>{p === 0 ? "—" : money(subtotal * p)}</span>
               </button>
             ))}
+            <button
+              className={tipMode === "custom" ? styles.tipTileActive : styles.tipTile}
+              onClick={pickCustomTip}
+            >
+              <span className={styles.tipLabel}>Custom</span>
+              <span className={styles.tipAmount}>
+                {tipMode === "custom" ? money(customUnit === "%" ? subtotal * (customTip / 100) : customTip) : "—"}
+              </span>
+            </button>
           </div>
+          {tipMode === "custom" && (
+            <div className={styles.customTipRow}>
+              <span className={styles.customTipPrefix}>{customUnit}</span>
+              <input
+                className={styles.customTipInput}
+                type="number"
+                min="0"
+                step={customUnit === "%" ? 1 : 0.5}
+                inputMode="decimal"
+                placeholder={customUnit === "%" ? "0" : "0.00"}
+                value={customTip === 0 ? "" : customTip}
+                onChange={(e) => setCustomTip(parseFloat(e.target.value) || 0)}
+                autoFocus
+              />
+              <div className={styles.customUnitToggle}>
+                <button
+                  className={customUnit === "$" ? styles.customUnitBtnActive : styles.customUnitBtn}
+                  onClick={() => setCustomUnit("$")}
+                  aria-label="Dollars"
+                >
+                  $
+                </button>
+                <button
+                  className={customUnit === "%" ? styles.customUnitBtnActive : styles.customUnitBtn}
+                  onClick={() => setCustomUnit("%")}
+                  aria-label="Percent"
+                >
+                  %
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className={styles.totals}>

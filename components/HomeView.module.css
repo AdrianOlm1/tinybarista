@@ -19,7 +19,7 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(120, 79, 48, 0.18) 0%, rgba(103, 66, 38, 0.34) 45%, rgba(74, 46, 26, 0.62) 100%);
+  background: linear-gradient(180deg, rgba(137, 77, 31, 0.18) 0%, rgba(117, 64, 24, 0.34) 45%, rgba(84, 44, 16, 0.62) 100%);
 }
 .heroContent {
   position: relative;
@@ -70,7 +70,7 @@
   align-items: center;
   font: 300 12px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.06em;
-  color: rgba(247, 240, 228, 0.72);
+  color: rgba(246, 238, 223, 0.72);
   padding-top: 4px;
 }
 .tags span:nth-child(even) {
@@ -113,7 +113,7 @@
 }
 .ctaSecondary {
   border: 1px solid var(--light-green);
-  background: rgba(63, 104, 50, 0.55);
+  background: rgba(51, 119, 34, 0.55);
   color: var(--cream);
   border-radius: 999px;
   padding: 16px 24px;
@@ -161,7 +161,7 @@
   max-width: 620px;
   position: relative;
   background: var(--off-white);
-  border: 2px dashed rgba(107, 67, 38, 0.35);
+  border: 2px dashed rgba(116, 64, 27, 0.35);
   border-radius: 22px;
   padding: 30px 24px;
   display: flex;
@@ -169,7 +169,7 @@
   align-items: center;
   gap: 16px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(59, 35, 23, 0.1);
+  box-shadow: 0 10px 30px rgba(62, 34, 20, 0.1);
 }
 .couponTab {
   position: absolute;
@@ -203,7 +203,7 @@
 }
 .couponBody {
   font: 300 13.5px/1.6 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.7);
+  color: rgba(62, 34, 20, 0.7);
   max-width: 380px;
 }
 .couponBtn {
@@ -277,7 +277,7 @@
   gap: 14px;
   width: 100%;
   max-width: 520px;
-  color: rgba(107, 67, 38, 0.35);
+  color: rgba(116, 64, 27, 0.35);
 }
 .favRule span:first-child,
 .favRule span:last-child {
@@ -308,14 +308,16 @@
 
 .favGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
   position: relative;
   background: #fff;
-  border: 1px solid rgba(107, 67, 38, 0.16);
+  border: 1px solid rgba(116, 64, 27, 0.16);
   border-radius: 20px;
   overflow: hidden;
   display: flex;
@@ -323,7 +325,7 @@
   transition: box-shadow 0.28s var(--ease), transform 0.28s var(--ease);
 }
 .card:hover {
-  box-shadow: 0 12px 26px rgba(59, 35, 23, 0.16);
+  box-shadow: 0 12px 26px rgba(62, 34, 20, 0.16);
   transform: translateY(-3px);
 }
 .cardPhoto {
@@ -353,8 +355,8 @@
   font: 500 10px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  box-shadow: 0 3px 10px rgba(59, 35, 23, 0.3);
-  border: 1.5px solid rgba(247, 240, 228, 0.8);
+  box-shadow: 0 3px 10px rgba(62, 34, 20, 0.3);
+  border: 1.5px solid rgba(246, 238, 223, 0.8);
 }
 .cardBody {
   padding: 14px;
@@ -368,7 +370,7 @@
 }
 .cardBlurb {
   font: 300 12.5px/1.5 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.6);
+  color: rgba(62, 34, 20, 0.6);
   flex: 1;
 }
 .cardFoot {
@@ -396,7 +398,7 @@
 }
 
 .moreCard {
-  border: 2px dashed rgba(107, 67, 38, 0.4);
+  border: 2px dashed rgba(116, 64, 27, 0.4);
   background: var(--off-white);
   border-radius: 20px;
   cursor: pointer;
@@ -412,7 +414,7 @@
 }
 .moreCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(59, 35, 23, 0.14);
+  box-shadow: 0 12px 28px rgba(62, 34, 20, 0.14);
   border-color: var(--forest);
 }
 .moreHeart {
@@ -432,7 +434,7 @@
 }
 .moreBody {
   font: 300 12.5px/1.5 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.62);
+  color: rgba(62, 34, 20, 0.62);
   max-width: 170px;
 }
 .moreLink {
@@ -468,6 +470,8 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 26px;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .aboutText {
   display: flex;
@@ -520,7 +524,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: rgba(107, 67, 38, 0.45);
+  color: rgba(116, 64, 27, 0.45);
 }
 .quoteRule span:first-child,
 .quoteRule span:last-child {
@@ -546,9 +550,13 @@
 .visit {
   background: var(--cream);
   padding: 32px 18px;
+}
+.visitGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .visitLabel {
   font: 500 10.5px/1 var(--font-jost), sans-serif;
@@ -559,7 +567,7 @@
 }
 .visitBody {
   font: 300 13.5px/1.8 var(--font-jost), sans-serif;
-  color: rgba(59, 35, 23, 0.75);
+  color: rgba(62, 34, 20, 0.75);
 }
 .visitBody a {
   text-decoration: underline;
@@ -568,7 +576,7 @@
 
 .footer {
   background: var(--espresso);
-  color: rgba(247, 240, 228, 0.7);
+  color: rgba(246, 238, 223, 0.7);
   border-top: 3px solid var(--forest);
   padding: 26px 18px 34px;
   display: flex;
@@ -595,7 +603,7 @@
   font: 400 17px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(247, 240, 228, 0.92);
+  color: rgba(246, 238, 223, 0.92);
 }
 .footerAddr {
   font: 300 12.5px/1.7 var(--font-jost), sans-serif;
