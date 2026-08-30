@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tiny Baristas — order-ahead demo
 
-## Getting Started
+A Next.js/React rebuild of the [design handoff](../design_handoff_tiny_baristas/README.md) prototype: home page, order menu, search, drink customization, and checkout with tipping — built for a click-through demo at **tb.adrianolm.com**.
 
-First, run the development server:
+## What's implemented
+
+All 8 screens from the design handoff, matched closely to its tokens (color, type, spacing, motion):
+
+- **Home** — hero, status strip, $5 Specials coupon, weekly favorites, sisters' story, visit info, footer
+- **Order menu** — sticky category chips, saved go-to's, photo cards, favoriting
+- **Customize sheet** — one-tap option chips with live pricing (centered modal on desktop, bottom sheet on phone)
+- **Search** — full-screen overlay, quick chips, substring match across name/blurb/category
+- **Checkout** — editable line items, clock-aware pickup windows, tipping, totals
+- **Cookie consent** — gates what gets saved to `localStorage`
+
+Responsive behavior uses real CSS media queries at 768px (no device-toggle hack from the prototype).
+
+### Wiring (per the handoff's priority order)
+
+1. **Menu data** — [data/menu.json](data/menu.json) is the single source for drinks/categories/pricing. [lib/menu.ts](lib/menu.ts) loads it; [app/api/menu/route.ts](app/api/menu/route.ts) also serves it over HTTP if you'd rather fetch than import.
+2. **Local persistence** — [lib/store.tsx](lib/store.tsx) saves favorites, go-to's, customer name/phone, and the cart to `localStorage`, gated by the cookie choice ("essentials only" keeps just the cart). Nothing is read from storage before consent.
+3. **Fake orders** — `POST /api/orders` ([route.ts](app/api/orders/route.ts)) stores orders **in memory** (resets on server restart) and returns an order id shown on the confirmation screen. A minimal **barista view** at [/barista](app/barista/page.tsx) lists orders and lets you mark them ready.
+4. **Pickup capacity** — not solved here (same gap the handoff calls out). Slots are generated purely from the clock in [lib/pricing.ts](lib/pricing.ts).
+5. **Notifications** — the "we'll text you" line is a demo promise; the order route just `console.log`s it.
+6. **Payments** — out of scope. **PAY $X** simulates success and advances to confirmation.
+
+## Running it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The barista queue is at `/barista`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Before this goes anywhere real
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Swap the in-memory order store ([lib/ordersStore.ts](lib/ordersStore.ts)) for SQLite or a hosted DB — it currently resets on every server restart/deploy.
+- Add real per-slot capacity (`GET /api/slots`) before trusting the pickup-time picker under load.
+- Wire actual SMS (Twilio) into the order route if the "we'll text you" promise needs to be real.
+- Payments: this UI assumes Squarespace Commerce (or Square/Toast) owns checkout — don't stand up Stripe without deciding that first.
 
-## Learn More
+## Deploying to tb.adrianolm.com (Vercel)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repo (or the `tinybarista/web` subfolder) to GitHub.
+2. In Vercel, **New Project** → import it. If `web/` isn't the repo root, set **Root Directory** to `tinybarista/web` in the project's Build & Development settings.
+3. Framework preset should auto-detect as Next.js — no env vars are required for the demo (no external services are called).
+4. **Settings → Domains** → add `tb.adrianolm.com`. Vercel gives you a CNAME (or A/ALIAS) record to add wherever `adrianolm.com`'s DNS is managed — add it there and Vercel issues the certificate automatically.
+5. The in-memory order store means orders won't survive a redeploy or serverless cold start under real traffic — fine for a click-through demo, worth flagging before a real launch (see above).

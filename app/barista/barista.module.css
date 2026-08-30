@@ -1,0 +1,78 @@
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  font-family: var(--font-jost), sans-serif;
+  color: var(--ink);
+}
+.title {
+  font-family: var(--font-pinyon), cursive;
+  font-weight: 400;
+  font-size: 40px;
+  color: var(--forest);
+  margin: 0 0 6px;
+}
+.sub {
+  font-size: 13px;
+  color: rgba(59, 35, 23, 0.55);
+  margin: 0 0 28px;
+}
+.empty {
+  font-size: 14px;
+  color: rgba(59, 35, 23, 0.55);
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.card,
+.cardReady {
+  border: 1px solid rgba(107, 67, 38, 0.18);
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #fff;
+}
+.cardReady {
+  composes: card;
+  opacity: 0.55;
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+.name {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.items {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  font-size: 13px;
+  color: rgba(59, 35, 23, 0.75);
+  line-height: 1.6;
+}
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn {
+  border: 1px solid var(--forest);
+  background: #fff;
+  color: var(--forest);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font: 500 12px/1 var(--font-jost), sans-serif;
+}
+.btn:hover {
+  background: var(--forest);
+  color: #fff;
+}

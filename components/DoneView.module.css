@@ -1,0 +1,53 @@
+.wrap {
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  animation: rise 0.3s ease;
+}
+.script {
+  font: 400 54px/1 var(--font-pinyon), cursive;
+  color: var(--forest);
+}
+.line {
+  font: 500 15px/1.4 var(--font-jost), sans-serif;
+}
+.orderId {
+  font: 300 12px/1 var(--font-jost), sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(27, 26, 23, 0.45);
+}
+.body {
+  font: 300 13.5px/1.6 var(--font-jost), sans-serif;
+  color: rgba(27, 26, 23, 0.6);
+  max-width: 360px;
+}
+.btn {
+  margin-top: 8px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  background: #fff;
+  border-radius: 999px;
+  padding: 12px 22px;
+  cursor: pointer;
+  font: 500 13px/1 var(--font-jost), sans-serif;
+  letter-spacing: 0.06em;
+}
+.btn:hover {
+  background: var(--forest);
+  color: #fff;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

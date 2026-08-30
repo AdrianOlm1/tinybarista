@@ -1,0 +1,256 @@
+{
+  "categories": [
+    { "id": "Signature", "script": "Signature Lattes", "sub": "house creations" },
+    { "id": "Regular", "script": "Regulars", "sub": "the classics" },
+    { "id": "Matcha", "script": "Matcha", "sub": "18 & 20 oz" },
+    { "id": "Sips & kids", "script": "Sips & kids", "sub": "12 oz · no coffee" },
+    {
+      "id": "$5 Specials",
+      "script": "$5 Specials",
+      "sub": "rotating weekly",
+      "note": "A rotating pick every week — same drinks, smaller price. Nothing is on special right now: check back soon."
+    }
+  ],
+  "items": [
+    {
+      "id": "cinn",
+      "cat": "Signature",
+      "name": "Cinn-toast Crunch Latte",
+      "base": 6.5,
+      "img": "cinn-toast.jpg",
+      "blurb": "Brown sugar latte, vanilla cold foam, cereal crumble.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], "choose one"],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], "+$1.00 each"]
+      ]
+    },
+    {
+      "id": "cocoa",
+      "cat": "Signature",
+      "name": "Cocoa Puff Latte",
+      "base": 6.5,
+      "img": "cocoa-puff.jpg",
+      "blurb": "Vanilla iced latte, cream cheese cold foam, Cocoa Puffs.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "choco",
+      "cat": "Signature",
+      "name": "Choco Banana",
+      "base": 6.5,
+      "img": "choco-banana.jpg",
+      "blurb": "Classic latte with chocolate and banana. Smooth, comforting.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "cookie",
+      "cat": "Signature",
+      "name": "Cookie Butter Latte",
+      "base": 6.5,
+      "img": "cookie-butter.jpg",
+      "blurb": "Bold espresso, cookie butter, poured over ice.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "fresita",
+      "cat": "Signature",
+      "name": "Fresita Shortcake",
+      "base": 6.5,
+      "img": null,
+      "blurb": "White chocolate vanilla cold foam, strawberry shortcake crumbs.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "duvalin",
+      "cat": "Signature",
+      "name": "Duvalín Latte",
+      "base": 6.5,
+      "img": null,
+      "blurb": "Hazelnut and strawberry swirls — the childhood treat, grown up.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "brownsugar",
+      "cat": "Regular",
+      "name": "Brown Sugar Shaken Espresso",
+      "base": 6,
+      "img": "brown-sugar.jpg",
+      "blurb": "Shaken with brown sugar over ice. Strong, caramelized.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Cold foam", [["None", "+0"], ["Vanilla", "+0.75"]], "+$0.75"],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "caramel",
+      "cat": "Regular",
+      "name": "Caramel Macchiato",
+      "base": 6,
+      "img": "caramel-macchiato.jpg",
+      "blurb": "Espresso over milk, buttery caramel drizzle. An OG, elevated.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Cold foam", [["None", "+0"], ["Vanilla", "+0.75"], ["Strawberry", "+0.75"], ["Caramel", "+0.75"]], "+$0.75"],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "vanilla",
+      "cat": "Regular",
+      "name": "Vanilla Iced Latte",
+      "base": 6,
+      "img": "vanilla-latte.jpg",
+      "blurb": "The everyday one. Simple, cold, dependable.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Cold foam", [["None", "+0"], ["Vanilla", "+0.75"]], "+$0.75"]
+      ]
+    },
+    {
+      "id": "honey",
+      "cat": "Regular",
+      "name": "Honey Cinnamon Latte",
+      "base": 6,
+      "img": null,
+      "blurb": "Golden honey, a dash of cinnamon, served over ice.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Cold foam", [["None", "+0"], ["Vanilla", "+0.75"], ["Strawberry", "+0.75"]], "+$0.75"],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "horchata",
+      "cat": "Regular",
+      "name": "Horchata Latte",
+      "base": 6,
+      "img": null,
+      "blurb": "Cinnamon-sweet horchata meets espresso.",
+      "opts": [
+        ["Size", [["20 oz", "+0"], ["24 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"], ["No milk", "+0"]], ""],
+        ["Cold foam", [["None", "+0"], ["Vanilla", "+0.75"], ["Caramel", "+0.75"]], "+$0.75"],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "banana-matcha",
+      "cat": "Matcha",
+      "name": "Banana Pudding Matcha",
+      "base": 7.5,
+      "img": "banana-matcha.jpg",
+      "blurb": "Smooth matcha, velvety banana pudding. Comfort in a cup.",
+      "opts": [
+        ["Size", [["20 oz", "+0"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"]], ""],
+        ["Extra shot", [["None", "+0"], ["1 shot", "+1.00"], ["2 shots", "+2.00"]], ""]
+      ]
+    },
+    {
+      "id": "straw-matcha",
+      "cat": "Matcha",
+      "name": "Strawberry Matcha Latte",
+      "base": 7,
+      "img": "strawberry-matcha.jpg",
+      "blurb": "Creamy matcha layered over real strawberry.",
+      "opts": [
+        ["Size", [["18 oz", "+0"], ["20 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"]], ""],
+        ["Cold foam", [["None", "+0"], ["Vanilla", "+0.75"], ["Strawberry", "+0.75"]], "+$0.75"]
+      ]
+    },
+    {
+      "id": "shortcake-matcha",
+      "cat": "Matcha",
+      "name": "Strawberry Shortcake Matcha",
+      "base": 7,
+      "img": null,
+      "blurb": "White chocolate, vanilla cold foam, shortcake crumbs.",
+      "opts": [
+        ["Size", [["18 oz", "+0"], ["20 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"]], ""]
+      ]
+    },
+    {
+      "id": "cookie-matcha",
+      "cat": "Matcha",
+      "name": "Cookie Butter Matcha",
+      "base": 7,
+      "img": null,
+      "blurb": "Silky matcha, sweet cookie goodness. Dessert you can drink.",
+      "opts": [
+        ["Size", [["18 oz", "+0"], ["20 oz", "+0.75"]], ""],
+        ["Milk", [["Whole", "+0"], ["Oat", "+0"], ["Almond", "+0"]], ""]
+      ]
+    },
+    {
+      "id": "strawmilk",
+      "cat": "Sips & kids",
+      "name": "Strawberry Milk",
+      "base": 2,
+      "img": null,
+      "blurb": "Served in a 12 oz.",
+      "opts": []
+    },
+    {
+      "id": "chocmilk",
+      "cat": "Sips & kids",
+      "name": "Chocolate Milk",
+      "base": 2,
+      "img": null,
+      "blurb": "Served in a 12 oz.",
+      "opts": []
+    },
+    {
+      "id": "lemonade",
+      "cat": "Sips & kids",
+      "name": "Pink Lemonade",
+      "base": 2,
+      "img": null,
+      "blurb": "Served in a 12 oz.",
+      "opts": []
+    },
+    {
+      "id": "shaved",
+      "cat": "Sips & kids",
+      "name": "Kids Shaved Ice",
+      "base": 4,
+      "img": null,
+      "blurb": "Cherry, blue raspberry, or grape.",
+      "opts": [
+        ["Flavor", [["Cherry", "+0"], ["Blue raspberry", "+0"], ["Grape", "+0"]], "choose one"]
+      ]
+    }
+  ],
+  "featured": [
+    { "id": "cinn", "tag": "most ordered" },
+    { "id": "brownsugar", "tag": "staff pick" },
+    { "id": "banana-matcha", "tag": "new" }
+  ]
+}
