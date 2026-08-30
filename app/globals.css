@@ -36,13 +36,14 @@ a {
   color: var(--forest);
   text-decoration: none;
 }
-a:hover {
-  color: var(--dark-green);
-}
 
 button,
 input {
   font-family: inherit;
+  font-size: 16px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
 }
 
 button {
@@ -65,7 +66,7 @@ input {
 input:focus {
   outline: none;
   border-color: var(--forest);
-  box-shadow: 0 0 0 3px rgba(63, 104, 50, 0.15);
+  box-shadow: 0 0 0 3px rgba(51, 119, 34, 0.15);
 }
 
 html {
@@ -83,9 +84,6 @@ html {
 ::-webkit-scrollbar-thumb {
   background: var(--brown);
   border-radius: 999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--deep-brown);
 }
 
 .hscroll {
@@ -201,4 +199,14 @@ html {
 }
 .slideFromLeft {
   animation: slideFromLeft 0.42s var(--ease) both;
+}
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--dark-green);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-brown);
+  }
 }

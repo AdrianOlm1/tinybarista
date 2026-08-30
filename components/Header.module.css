@@ -121,11 +121,6 @@
   font: 400 13px/1 var(--font-jost), sans-serif;
   color: rgba(62, 34, 20, 0.55);
 }
-.searchBtn:hover {
-  background: var(--cream);
-  border-color: var(--forest);
-  color: var(--forest);
-}
 @media (max-width: 767px) {
   .searchBtn {
     padding: 0 12px;
@@ -194,4 +189,13 @@
   border-color: var(--forest);
   background: var(--forest);
   color: #fff;
+}
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  .searchBtn:hover {
+    background: var(--cream);
+    border-color: var(--forest);
+    color: var(--forest);
+  }
 }

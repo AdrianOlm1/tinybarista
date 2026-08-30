@@ -36,10 +36,6 @@
   font: 500 13px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.06em;
 }
-.btn:hover {
-  background: var(--forest);
-  color: #fff;
-}
 
 @keyframes rise {
   from {
@@ -49,5 +45,13 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background: var(--forest);
+    color: #fff;
   }
 }

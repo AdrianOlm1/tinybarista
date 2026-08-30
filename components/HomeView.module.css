@@ -96,10 +96,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.ctaPrimary:hover {
-  background: #fff;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
-}
 .sheen {
   position: absolute;
   top: 0;
@@ -121,9 +117,6 @@
   font: 500 13px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-.ctaSecondary:hover {
-  background: var(--forest);
 }
 
 .statusStrip {
@@ -217,9 +210,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.couponBtn:hover {
-  background: var(--dark-green);
-}
 
 .divider {
   width: 100%;
@@ -237,10 +227,6 @@
   font: 400 11px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-}
-.divider:hover {
-  background: var(--deep-brown);
-  color: var(--cream);
 }
 .dividerLine {
   width: 26px;
@@ -324,10 +310,6 @@
   flex-direction: column;
   transition: box-shadow 0.28s var(--ease), transform 0.28s var(--ease);
 }
-.card:hover {
-  box-shadow: 0 12px 26px rgba(62, 34, 20, 0.16);
-  transform: translateY(-3px);
-}
 .cardPhoto {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -340,9 +322,6 @@
   object-fit: cover;
   display: block;
   transition: transform 0.7s var(--ease);
-}
-.cardPhoto:hover .cardImg {
-  transform: scale(1.02);
 }
 .tag {
   position: absolute;
@@ -392,10 +371,6 @@
   font: 500 12px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.05em;
 }
-.customizeBtn:hover {
-  background: var(--forest);
-  color: var(--cream);
-}
 
 .moreCard {
   border: 2px dashed rgba(116, 64, 27, 0.4);
@@ -411,11 +386,6 @@
   padding: 22px;
   text-align: center;
   transition: transform 0.18s, box-shadow 0.18s;
-}
-.moreCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(62, 34, 20, 0.14);
-  border-color: var(--forest);
 }
 .moreHeart {
   width: 56px;
@@ -615,5 +585,39 @@
   }
   to {
     transform: translateX(220%);
+  }
+}
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  .ctaPrimary:hover {
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  }
+  .ctaSecondary:hover {
+    background: var(--forest);
+  }
+  .couponBtn:hover {
+    background: var(--dark-green);
+  }
+  .divider:hover {
+    background: var(--deep-brown);
+    color: var(--cream);
+  }
+  .card:hover {
+    box-shadow: 0 12px 26px rgba(62, 34, 20, 0.16);
+    transform: translateY(-3px);
+  }
+  .cardPhoto:hover .cardImg {
+    transform: scale(1.02);
+  }
+  .customizeBtn:hover {
+    background: var(--forest);
+    color: var(--cream);
+  }
+  .moreCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(62, 34, 20, 0.14);
+    border-color: var(--forest);
   }
 }

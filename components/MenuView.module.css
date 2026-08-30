@@ -93,9 +93,6 @@
   cursor: pointer;
   font: 500 12px/1 var(--font-jost), sans-serif;
 }
-.gotoAdd:hover {
-  background: var(--dark-green);
-}
 
 .groups {
   padding: 14px 18px 120px;
@@ -147,10 +144,6 @@
   flex-direction: column;
   transition: box-shadow 0.28s var(--ease), transform 0.28s var(--ease);
 }
-.card:hover {
-  box-shadow: 0 12px 26px rgba(62, 34, 20, 0.16);
-  transform: translateY(-3px);
-}
 .photo {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -164,9 +157,6 @@
   object-fit: cover;
   display: block;
   transition: transform 0.7s var(--ease);
-}
-.photo:hover .img {
-  transform: scale(1.02);
 }
 .placeholder {
   width: 100%;
@@ -198,9 +188,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.favBtn:hover {
-  background: #fff;
 }
 .body {
   padding: 13px 14px 14px;
@@ -237,7 +224,24 @@
   font: 500 12px/1 var(--font-jost), sans-serif;
   letter-spacing: 0.05em;
 }
-.customizeBtn:hover {
-  background: var(--forest);
-  color: #fff;
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  .gotoAdd:hover {
+    background: var(--dark-green);
+  }
+  .card:hover {
+    box-shadow: 0 12px 26px rgba(62, 34, 20, 0.16);
+    transform: translateY(-3px);
+  }
+  .photo:hover .img {
+    transform: scale(1.02);
+  }
+  .favBtn:hover {
+    background: #fff;
+  }
+  .customizeBtn:hover {
+    background: var(--forest);
+    color: #fff;
+  }
 }

@@ -72,7 +72,11 @@
   cursor: pointer;
   font: 500 12px/1 var(--font-jost), sans-serif;
 }
-.btn:hover {
-  background: var(--forest);
-  color: #fff;
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background: var(--forest);
+    color: #fff;
+  }
 }

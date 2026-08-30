@@ -63,9 +63,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.accept:hover {
-  background: var(--dark-green);
-}
 .decline {
   flex: 0 1 auto;
   border: 1px solid rgba(116, 64, 27, 0.35);
@@ -78,9 +75,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.decline:hover {
-  background: var(--sand);
-}
 
 @keyframes rise {
   from {
@@ -90,5 +84,15 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Hover only on devices with a real pointer — avoids "stuck" hover states after a tap on touchscreens. */
+@media (hover: hover) and (pointer: fine) {
+  .accept:hover {
+    background: var(--dark-green);
+  }
+  .decline:hover {
+    background: var(--sand);
   }
 }
