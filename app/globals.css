@@ -53,9 +53,16 @@ button {
     border-color 0.2s ease,
     transform 0.12s ease,
     box-shadow 0.2s ease;
+  /* Stops a quick tap (e.g. the floating bean, nav pills) from being read as
+     the start of a double-tap-to-zoom gesture on mobile. */
+  touch-action: manipulation;
 }
 button:active {
   transform: scale(0.96);
+}
+
+a {
+  touch-action: manipulation;
 }
 
 input {

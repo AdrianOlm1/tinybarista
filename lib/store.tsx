@@ -154,17 +154,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     }
   }, [state.cookieChoice, state.cart, state.favs, state.gotos, state.name, state.phone]);
 
-  const scrollTop = useCallback(() => {
-    if (typeof window !== "undefined") window.scrollTo({ top: 0 });
+  // Scroll-to-top on navigation is handled once, after the new view actually
+  // mounts, by the useEffect in App.tsx — doing it here too (before the DOM
+  // updates) caused a double scroll-reset that showed up as a jarring zoom/jump
+  // on mobile mid-transition.
+  const nav = useCallback((patch: Partial<StoreState>) => {
+    setState((s) => ({ ...s, sheetId: null, ...patch }));
   }, []);
-
-  const nav = useCallback(
-    (patch: Partial<StoreState>) => {
-      scrollTop();
-      setState((s) => ({ ...s, sheetId: null, ...patch }));
-    },
-    [scrollTop]
-  );
 
   const actions: StoreActions = useMemo(
     () => ({
@@ -214,7 +210,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             })
             .catch(() => {});
 
-          scrollTop();
           return { ...s, view: "done", cart: [], gotos, slot, sheetId: null };
         });
       },
@@ -302,7 +297,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       acceptCookies: () => setState((s) => ({ ...s, cookieChoice: "all" })),
       declineCookies: () => setState((s) => ({ ...s, cookieChoice: "essential" })),
     }),
-    [nav, scrollTop, state.catFlip]
+    [nav, state.catFlip]
   );
 
   const value: Store = { ...state, ...actions };

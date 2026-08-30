@@ -127,8 +127,20 @@ export default function CheckoutView() {
                       <button className={styles.editBtn} onClick={() => openSheet(line.id, index)}>
                         Edit drink
                       </button>
-                      <button className={styles.removeBtn} onClick={() => lineRemove(index)}>
-                        Remove
+                      <button
+                        className={styles.removeBtn}
+                        onClick={() => lineRemove(index)}
+                        aria-label="Remove drink"
+                      >
+                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" aria-hidden="true">
+                          <path
+                            d="M1.5 4H13.5M5.5 4V2.5C5.5 2.22386 5.72386 2 6 2H9C9.27614 2 9.5 2.22386 9.5 2.5V4M6.5 7.5V11.5M8.5 7.5V11.5M2.5 4L3.2 13.2C3.24 13.65 3.62 14 4.07 14H10.93C11.38 14 11.76 13.65 11.8 13.2L12.5 4"
+                            stroke="currentColor"
+                            strokeWidth="1.3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
                       </button>
                     </div>
                   </div>

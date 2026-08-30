@@ -149,6 +149,12 @@
   background: var(--sand);
   flex: none;
 }
+@media (max-width: 767px) {
+  .lineImg {
+    width: 68px;
+    height: 68px;
+  }
+}
 .lineBody {
   flex: 1;
   min-width: 0;
@@ -177,6 +183,11 @@
   gap: 9px;
   flex-wrap: wrap;
 }
+@media (max-width: 767px) {
+  .lineActions {
+    gap: 6px;
+  }
+}
 .stepper {
   display: flex;
   align-items: center;
@@ -192,6 +203,11 @@
   padding: 9px 14px;
   font: 400 15px/1 var(--font-jost), sans-serif;
 }
+@media (max-width: 767px) {
+  .stepBtn {
+    padding: 8px 10px;
+  }
+}
 .stepVal {
   font: 400 13.5px/1 var(--font-jost), sans-serif;
   min-width: 16px;
@@ -206,14 +222,24 @@
   cursor: pointer;
   font: 500 12px/1 var(--font-jost), sans-serif;
 }
+@media (max-width: 767px) {
+  .editBtn {
+    padding: 8px 11px;
+  }
+}
 .removeBtn {
-  margin-left: auto;
-  border: 0;
-  background: transparent;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(179, 38, 30, 0.35);
+  background: #fff;
+  color: #b3261e;
   cursor: pointer;
-  padding: 8px 2px;
-  font: 400 12px/1 var(--font-jost), sans-serif;
-  color: rgba(62, 34, 20, 0.45);
+  padding: 0;
 }
 
 .tipHead {
@@ -379,7 +405,9 @@
     color: #fff;
   }
   .removeBtn:hover {
-    color: #8a3b2a;
+    background: #b3261e;
+    border-color: #b3261e;
+    color: #fff;
   }
   .payBtn:hover {
     background: var(--forest);
