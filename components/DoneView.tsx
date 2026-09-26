@@ -4,13 +4,13 @@ import { useStore } from "@/lib/store";
 import styles from "./DoneView.module.css";
 
 export default function DoneView() {
-  const { name, slot, lastOrderId, backToMenu } = useStore();
+  const { name, lastPickup, lastOrderId, backToMenu } = useStore();
 
   return (
     <div className={styles.wrap}>
       <div className={styles.script}>¡Gracias!</div>
       <div className={styles.line}>
-        Order for {name || "the counter"} · pickup {slot}
+        Order for {name || "the counter"} · pickup {lastPickup}
       </div>
       {lastOrderId && <div className={styles.orderId}>Order #{lastOrderId}</div>}
       <div className={styles.body}>

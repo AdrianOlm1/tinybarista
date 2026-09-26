@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { money, buildSlots, optSummary } from "@/lib/pricing";
+import { ASAP_LABEL, PREP_MIN, fmtTime, resolvePickup } from "@/lib/hours";
+import { money, optSummary } from "@/lib/pricing";
 import { useCartTotals, useStore } from "@/lib/store";
 import styles from "./CheckoutView.module.css";
 
@@ -10,6 +11,7 @@ const TIP_OPTIONS: (0 | 0.12 | 0.18 | 0.22)[] = [0, 0.12, 0.18, 0.22];
 export default function CheckoutView() {
   const {
     now,
+    pickupDay,
     slot,
     name,
     phone,
@@ -25,6 +27,7 @@ export default function CheckoutView() {
     lineRemove,
     setName,
     setPhone,
+    pickDay,
     pickSlot,
     pickTip,
     pickCustomTip,
@@ -34,8 +37,14 @@ export default function CheckoutView() {
   } = useStore();
   const { lines, subtotal, count, tax, tip, total } = useCartTotals();
 
-  const slotInfo = useMemo(() => buildSlots(now), [now]);
-  const activeSlot = slot && slotInfo.slots.includes(slot) ? slot : slotInfo.slots[0];
+  const pickup = useMemo(() => resolvePickup(now, pickupDay, slot), [now, pickupDay, slot]);
+  const { day } = pickup;
+
+  let pickupNote = "";
+  if (!pickup.openToday) pickupNote = "We're closed right now — pick from our next open days.";
+  else if (day.isToday && pickup.times[0] === ASAP_LABEL)
+    pickupNote = `Ready in about ${PREP_MIN} minutes, or pick any time through ${fmtTime(day.close)}.`;
+  else if (day.isToday) pickupNote = `We open at ${fmtTime(day.open)} — pick any time below.`;
 
   return (
     <div className={styles.page}>
@@ -47,22 +56,40 @@ export default function CheckoutView() {
       <div className={styles.stack}>
         <div className={styles.card}>
           <div className={styles.cardLabel}>Pickup time</div>
-          <div className={styles.slots}>
-            {slotInfo.slots.map((s) => (
+          <div className={`${styles.days} hscroll`}>
+            {pickup.days.map((d) => (
               <button
-                key={s}
-                className={s === activeSlot ? styles.slotChipActive : styles.slotChip}
-                onClick={() => pickSlot(s)}
+                key={d.key}
+                className={d.key === day.key ? styles.dayChipActive : styles.dayChip}
+                onClick={() => pickDay(d.key)}
+                aria-pressed={d.key === day.key}
               >
-                {s}
+                <span className={styles.dayTop}>{d.relative}</span>
+                <span className={styles.dayBottom}>{d.date}</span>
               </button>
             ))}
           </div>
+          <div className={styles.dayMeta}>
+            {day.long} · open {fmtTime(day.open)} – {fmtTime(day.close)}
+          </div>
+          <div className={styles.slotsScroll}>
+            <div className={styles.slots}>
+              {pickup.times.map((t) => (
+                <button
+                  key={t}
+                  className={`${t === pickup.slot ? styles.slotChipActive : styles.slotChip} ${
+                    t === ASAP_LABEL ? styles.slotWide : ""
+                  }`}
+                  onClick={() => pickSlot(t)}
+                  aria-pressed={t === pickup.slot}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className={styles.slotNote}>
-            {slotInfo.closed
-              ? "We're closed right now — these are tomorrow's first windows."
-              : "Times roll forward as the morning goes; last pickup is 1:30 PM."}{" "}
-            We&rsquo;ll text you when it&rsquo;s on the counter.
+            {pickupNote} We&rsquo;ll text you when it&rsquo;s on the counter.
           </div>
         </div>
 

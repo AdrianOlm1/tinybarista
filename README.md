@@ -20,7 +20,7 @@ Responsive behavior uses real CSS media queries at 768px (no device-toggle hack 
 1. **Menu data** — [data/menu.json](data/menu.json) is the single source for drinks/categories/pricing. [lib/menu.ts](lib/menu.ts) loads it; [app/api/menu/route.ts](app/api/menu/route.ts) also serves it over HTTP if you'd rather fetch than import.
 2. **Local persistence** — [lib/store.tsx](lib/store.tsx) saves favorites, go-to's, customer name/phone, and the cart to `localStorage`, gated by the cookie choice ("essentials only" keeps just the cart). Nothing is read from storage before consent.
 3. **Fake orders** — `POST /api/orders` ([route.ts](app/api/orders/route.ts)) stores orders **in memory** (resets on server restart) and returns an order id shown on the confirmation screen. A minimal **barista view** at [/barista](app/barista/page.tsx) lists orders and lets you mark them ready.
-4. **Pickup capacity** — not solved here (same gap the handoff calls out). Slots are generated purely from the clock in [lib/pricing.ts](lib/pricing.ts).
+4. **Pickup capacity** — not solved here (same gap the handoff calls out). Pickup windows are generated purely from the clock and the store's weekly hours in [lib/hours.ts](lib/hours.ts) — edit `WEEK_HOURS` there when the hours change (times are computed in the store's time zone, `America/Los_Angeles`).
 5. **Notifications** — the "we'll text you" line is a demo promise; the order route just `console.log`s it.
 6. **Payments** — out of scope. **PAY $X** simulates success and advances to confirmation.
 

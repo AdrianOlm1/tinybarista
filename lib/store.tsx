@@ -11,7 +11,8 @@ import {
   type ReactNode,
 } from "react";
 import { CATS, findItem, ITEMS, SEED_GOTOS } from "./menu";
-import { buildSlots, optPrice, optSummary } from "./pricing";
+import { resolvePickup } from "./hours";
+import { optPrice, optSummary } from "./pricing";
 import { loadJSON, removeKey, saveJSON } from "./storage";
 import type { CartLine, CookieChoice, GoTo, NavDir, TipPct, View } from "./types";
 
@@ -29,7 +30,9 @@ interface StoreState {
   cart: CartLine[];
   favs: string[];
   gotos: GoTo[];
-  slot: string | null;
+  pickupDay: string | null; // YYYY-MM-DD (store time); null = first open day
+  slot: string | null; // time within that day; null = first available
+  lastPickup: string | null; // label of the pickup just ordered, for the confirmation screen
   name: string;
   phone: string;
   tipPct: TipPct;
@@ -65,6 +68,7 @@ interface StoreActions {
   lineRemove: (i: number) => void;
   setName: (v: string) => void;
   setPhone: (v: string) => void;
+  pickDay: (v: string) => void;
   pickSlot: (v: string) => void;
   pickTip: (v: TipPct) => void;
   pickCustomTip: () => void;
@@ -92,7 +96,9 @@ const initialState: StoreState = {
   cart: [],
   favs: [],
   gotos: SEED_GOTOS,
+  pickupDay: null,
   slot: null,
+  lastPickup: null,
   name: "",
   phone: "",
   tipPct: 0.18,
@@ -180,8 +186,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             return [entry, ...acc.filter((g) => g.id !== line.id)].slice(0, 3);
           }, s.gotos);
 
-          const slotInfo = buildSlots(s.now);
-          const slot = s.slot && slotInfo.slots.includes(s.slot) ? s.slot : slotInfo.slots[0];
+          const pickup = resolvePickup(s.now, s.pickupDay, s.slot);
 
           fetch("/api/orders", {
             method: "POST",
@@ -189,7 +194,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             body: JSON.stringify({
               name: s.name,
               phone: s.phone,
-              slot,
+              slot: pickup.label,
               items: s.cart.map((line) => {
                 const it = findItem(line.id);
                 return {
@@ -210,7 +215,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             })
             .catch(() => {});
 
-          return { ...s, view: "done", cart: [], gotos, slot, sheetId: null };
+          return { ...s, view: "done", cart: [], gotos, lastPickup: pickup.label, sheetId: null };
         });
       },
 
@@ -287,6 +292,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
       setName: (name) => setState((s) => ({ ...s, name })),
       setPhone: (phone) => setState((s) => ({ ...s, phone })),
+      pickDay: (pickupDay) => setState((s) => ({ ...s, pickupDay })),
       pickSlot: (slot) => setState((s) => ({ ...s, slot })),
       pickTip: (tipPct) => setState((s) => ({ ...s, tipPct, tipMode: "pct" })),
       pickCustomTip: () => setState((s) => ({ ...s, tipMode: "custom" })),
